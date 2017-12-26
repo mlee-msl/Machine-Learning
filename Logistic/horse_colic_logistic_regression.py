@@ -5,7 +5,8 @@ import numpy as np
 def load_dataset(fname):
     if os.path.exists(fname):
         dataset = np.loadtxt(fname, dtype=np.float64, delimiter=' ')
-        return dataset[:,:-1], dataset[:,-1].astype(np.int16)
+#         return dataset[:,:-1], dataset[:,-1].astype(np.int16)
+        return np.concatenate((np.ones((dataset.shape[0], 1)), dataset[:,:-1]), axis=1), dataset[:,-1].astype(np.int16)
     else:
         print('No such file or directory: \'%s\'' % fname)
 
