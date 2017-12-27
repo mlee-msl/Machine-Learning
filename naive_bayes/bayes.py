@@ -1,15 +1,24 @@
 import numpy as np
+import re
 import random
+
+def text_parse(document):
+    regexp = re.compile(r' +')
+    document_data = re.split(regexp, document)
+    document_data = list(map(lambda token: token.strip(' ,.\n').lower(), document_data)) # strip all punctuation and newline character
+    data = document_data[:-1]
+    target = 1 if document_data[-1] == 'insulting' else 0
+    return data, target
 
 # 文档集
 def load_dataset():
-    post_list = [['my', 'dog', 'has', 'flea', 'problems', 'help', 'please'],
-                 ['maybe', 'not', 'take', 'him', 'to', 'park', 'stupid'],
-                 ['my', 'dalmation', 'is', 'so', 'cute', 'I', 'love', 'him'],
-                 ['stop', 'posting', 'stupid', 'worthless', 'garbage'],
-                 ['Mr', 'licks', 'ate', 'my', 'steak', 'how', 'to', 'stop', 'him'],
-                 ['quit', 'buying', 'worthless', 'dog', 'food', 'stupid']] # 发布的文档集
-    label_list = [0, 1, 0, 1, 0, 1] # 1 represents insulting words, else 0 to be general
+    post_list = [] # 发布的文档集
+    label_list = [] # 1 represents insulting words, else 0 to be general
+    with open('data.txt', 'rt') as fr:
+        for document in fr.readlines():
+            data, target = text_parse(document)
+            post_list.append(data)
+            label_list.append(target)
     return post_list, label_list
 
 # 返回文档集对应词汇表
@@ -89,3 +98,4 @@ print('target: %d' % target)
 test_doc = post_list[doc_index]
 # test_doc = ['dog', 'help', 'how', 'not', 'park', 'please', 'to', 'my', 'take']
 test(test_doc)
+
