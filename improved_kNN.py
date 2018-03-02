@@ -1,9 +1,3 @@
-'''
-Created on 2018年1月15日
-
-@author: myPC
-'''
-
 from urllib import request
 import random
 import numpy as np
