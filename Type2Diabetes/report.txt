@@ -1,0 +1,36 @@
+********** LogisticRegression **********
+accuracy:  92.42%
+             precision    recall  f1-score   support
+
+     Others       0.86      0.80      0.83        15
+        T2D       0.94      0.96      0.95        51
+
+avg / total       0.92      0.92      0.92        66
+
+********** SVM **********
+accuracy:  90.91%
+             precision    recall  f1-score   support
+
+     Others       0.91      0.67      0.77        15
+        T2D       0.91      0.98      0.94        51
+
+avg / total       0.91      0.91      0.90        66
+
+********** RandomForest **********
+accuracy:  93.94%
+             precision    recall  f1-score   support
+
+     Others       0.82      0.93      0.87        15
+        T2D       0.98      0.94      0.96        51
+
+avg / total       0.94      0.94      0.94        66
+
+********** DecisionTree **********
+accuracy:  100.00%
+             precision    recall  f1-score   support
+
+     Others       1.00      1.00      1.00        15
+        T2D       1.00      1.00      1.00        51
+
+avg / total       1.00      1.00      1.00        66
+
