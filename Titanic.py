@@ -1,10 +1,11 @@
-def titanic():
-    import numpy as np
-    import pandas as pd
-    from sklearn.ensemble import RandomForestRegressor
-    from sklearn import preprocessing
-    from sklearn import linear_model
+import numpy as np
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+from sklearn import preprocessing
+from sklearn import linear_model
 
+
+def titanic():
     dataset_training = pd.read_csv('C:/users/myPC/Desktop/ml/Titanic/train.csv')
     dataset_test = pd.read_csv('C:/users/myPC/Desktop/ml/Titanic/test.csv')
     passenger_id = dataset_test['PassengerId']
@@ -40,7 +41,7 @@ def titanic():
     dataset_test_dummies['Age'] = ss.fit_transform(dataset_test_dummies.Age.reshape(-1, 1))
     dataset_test_dummies['Fare'] = ss.fit_transform(dataset_test_dummies.Fare.reshape(-1, 1))
     # get all processed samples
-    print(dataset_training_dummies)
+#     print(dataset_training_dummies)
     dataset_training_dummies = dataset_training_dummies.filter(regex='Age|SibSp|Parch|Fare|Pclass_*|Sex_*|Cabin_*|Embarked_*|Survived').as_matrix()
     # print(data_training_dummies.info())
     training_data = dataset_training_dummies[:, 1:]
